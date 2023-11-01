@@ -13,7 +13,7 @@ private:
 };
 
 template<typename T>
-inline std::vector<T> SqlService::executeToSqlResult(const CONNECTION_VAR& wrapped_connection,const STRING query)
+std::vector<T> SqlService::executeToSqlResult(const CONNECTION_VAR& wrapped_connection, const STRING query)
 {
 	var connection = get<0>(wrapped_connection);
 	var result = nanodbc::execute(connection, query);

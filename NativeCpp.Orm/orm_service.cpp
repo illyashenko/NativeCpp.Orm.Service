@@ -2,7 +2,6 @@
 #include <cstdint>
 #include <sstream>
 #include <iostream>
-#include "refl.hpp"
 #include "Jobs.h"
 #include "Customers.h"
 #include "IEntity.h"
@@ -80,8 +79,6 @@ struct Context : DBContext {
 
 int main() {
 
-	setlocale(LC_ALL, "");
-
 	DbContextOptionsBuilder option;
 	option.useSqlserver("Driver={ODBC Driver 17 for SQL Server};Server=localhost;DataBase=monitoring;Uid=sa;Pwd=17101030;");
 
@@ -89,10 +86,10 @@ int main() {
 
 	try 
 	{
-		var job = context.job.single(2003);
+		var job = context.job.all();
 	}
-	catch (const std::exception& ex) {
-		std::cout << ex.what();
+	catch (const std::exception* ex) {
+		std::cout << ex->what();
 	}
 
 	PROPERTIES_SET prop{ "id", "data" };

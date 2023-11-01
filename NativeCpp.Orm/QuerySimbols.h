@@ -1,6 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 #include <iostream>
+#include <sstream>
 
 class Simbols {
 public:
@@ -59,18 +60,14 @@ public:
 	//
 	inline static std::string iif(std::string condition, std::string value_1, std::string value_2) {
 
-		std::string result = "IIF";
-		result += Simbols::LEFTROUND;
-		result += condition;
-		result += Simbols::COMMA;
-		result += Simbols::SPACE;
-		result += value_1;
-		result += Simbols::COMMA;
-		result += Simbols::SPACE;
-		result += value_2;
-		result += Simbols::RIGHTROUND;
+		std::stringstream stream;
 
-		return result;
+		stream << "IIF";
+		stream << Simbols::LEFTROUND << condition << Simbols::COMMA;
+		stream << Simbols::SPACE << value_1 << Simbols::COMMA;
+		stream << Simbols::SPACE << value_2 << Simbols::RIGHTROUND;
+
+		return stream.str();
 	};
 
 	//
